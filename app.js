@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
+
+const cors = require('cors');
+app.use(cors());
+
+const compression = require('compression');
+app.use(compression());
+
 const mongoose = require("mongoose");
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -14,9 +21,10 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+
 // Link To my Database:
 mongoose
-.connect(process.env.MONGO_URL)
+.connect("mongodb+srv://touati:chinwa21021985@cluster0.jowbodx.mongodb.net/My_data?retryWrites=true&w=majority&appName=Cluster0")
 .then(() => {
   app.listen(port, () => {
     console.log(`http://localhost:${port}/`);
