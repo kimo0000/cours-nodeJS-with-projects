@@ -10,12 +10,13 @@ app.use(methodOverride("_method"));
 const routers = require('./routes/AllRoutes');
 const AddRouters = require('./routes/AddUser');
 const editRouters = require('./routes/EditUser');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // Link To my Database:
 mongoose
-.connect(
-  "mongodb+srv://touati:chinwa21021985@cluster0.jowbodx.mongodb.net/My_data?retryWrites=true&w=majority&appName=Cluster0"
-)
+.connect(process.env.MONGO_URL)
 .then(() => {
   app.listen(port, () => {
     console.log(`http://localhost:${port}/`);
