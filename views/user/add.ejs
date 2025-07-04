@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <script src="../js/color-modes.js"></script>
+    <link
+      rel="stylesheet"
+      href="../bootstrap-icons-1.10.5/font/bootstrap-icons.min.css"
+    />
+    <link rel="shortcut icon" href="../img/ali.png" type="image/x-icon" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.112.5" />
+    <title>Add page</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- theme mode styled -->
+    <link rel="stylesheet" href="../css/theme.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="../css/sidebars.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/myStyle.css" />
+  </head>
+  <body>
+    <%- include('../components/theme.ejs') %>
+
+    <main class="d-flex flex-nowrap">
+      <%- include('../components/sidebar.ejs', {currPage: "add"}) %>
+
+      <section class="w-100">
+        <%- include('../components/navbar.ejs') %>
+
+        <form
+          action="/user/add.html"
+          method="post"
+          class="mx-0 row gx-3 gy-4 mt-3"
+        >
+          <div class="col-md-6">
+            <label for="inputfirstName4" class="form-label">First Name:</label>
+            <input
+              placeholder="Enter Your First Name..."
+              type="text"
+              class="form-control"
+              id="inputfirstName4"
+              name="firstName"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputlastName4" class="form-label">Last Name:</label>
+            <input
+              placeholder="Enter Your Last Name..."
+              type="text"
+              class="form-control"
+              id="inputlastName4"
+              name="lastName"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputemail4" class="form-label">Email:</label>
+            <input
+              placeholder="Enter Your Email..."
+              type="email"
+              class="form-control"
+              id="inputemail4"
+              name="email"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputtele4" class="form-label">Telephone:</label>
+            <input
+              placeholder="Enter Your Phone Number..."
+              type="text"
+              class="form-control"
+              id="inputtele4"
+              name="phoneNumber"
+            />
+          </div>
+
+          <div>
+            <div class="col-md-6">
+              <label for="inputage4" class="form-label">Age:</label>
+              <input
+                placeholder="Your Age: ..."
+                type="number"
+                class="form-control"
+                id="inputage4"
+                name="age"
+              />
+            </div>
+          </div>
+
+          <div>
+            <div class="col-md-6">
+              <label for="inputCountry" class="form-label">Country:</label>
+              <select id="inputCountry" class="form-select" name="country">
+                <option value="" selected disabled>Select a country</option>
+                <% const arrOfAllCountryes = [ "Afghanistan", "Åland Islands","Albania", "Algeria", "American Samoa", "Andorra", "Angola","Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina","Armenia", "Aruba", "Australia", "Austria", "Azerbaijan","Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus","Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia","Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil","British Indian Ocean Territory", "Brunei Darussalam","Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon","Canada", "Cape Verde", "Cayman Islands", "Central African Republic","Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands","Colombia", "Comoros", "Congo", "Congo, The Democratic Republic of The","Cook Islands", "Costa Rica", "Cote D'ivoire", "Croatia", "Cuba", "Curaçao","Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic","Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia","Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France","French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia","Georgia", "Germany", "Ghana","Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe","Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-bissau","Guyana", "Haiti", "Heard Island and Mcdonald Islands", "Holy See (Vatican City State)","Honduras", "Hong Kong", "Hungary","Iceland", "India", "Indonesia", "Iran, Islamic Republic of","Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica","Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati","Korea, Democratic People's Republic of", "Korea, Republic of","Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic","Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein","Lithuania", "Luxembourg", "Macao", "Macedonia, The Former Yugoslav Republic of","Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta","Marshall Islands", "Martinique", "Mauritania", "Mauritius","Mayotte", "Mexico", "Micronesia, Federated States of","Moldova, Republic of", "Monaco", "Mongolia", "Montenegro","Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia","Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand","Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island","Northern Mariana Islands", "Norway", "Oman", "Pakistan","Palau", "Palestinian Territory, Occupied", "Panama", "Papua New Guinea","Paraguay", "Peru", "Philippines", "Pitcairn","Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion","Romania", "Russia", "Rwanda", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia","Saint Pierre and Miquelon", "Saint Vincent and The Grenadines", "Samoa", "San Marino","Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia","Seychelles", "Sierra Leone", "Singapore", "Slovakia","Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and The South Sandwich Islands","Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Eswatini","Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan (ROC)","Tajikistan", "Tanzania, United Republic of", "Thailand","Timor-leste", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia","Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates","United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay","Uzbekistan", "Vanuatu", "Venezuela","Vietnam", "Virgin Islands, British", "Virgin Islands, U.S.","Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe" ] %>
+                <% arrOfAllCountryes.forEach(country => { %>
+                  <option value="<%= country %>"><%= country %></option>
+                <% }) %>
+                
+              </select>
+            </div>
+          </div>
+
+
+          <div>
+            <div class="col-md-6">
+              <label for="inputGender" class="form-label">Gender:</label>
+              <select id="inputGender" class="form-select" name="gender">
+                <option selected hidden disabled>Choose here ...</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/sidebars.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
